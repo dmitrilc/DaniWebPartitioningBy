@@ -17,6 +17,11 @@ public class Entry {
         Map<Boolean, List<Student>> result = students.stream().collect(
                 Collectors.partitioningBy(student -> student.name().length() < 4));
         System.out.println(result);
+
+        Map<Boolean, Map<Boolean, List<Student>>> result2 = students.stream().collect(
+                Collectors.partitioningBy(student -> student.name().length() < 4,
+                        Collectors.partitioningBy(student -> student.age() > 22)));
+        System.out.println(result2);
     }
 }
 
